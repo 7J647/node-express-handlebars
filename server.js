@@ -20,14 +20,25 @@ var connection = mysql.createConnection({
   database: "movie_planner_DB"
 });
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
+
 app.get("/api/config", (req, res) => {
     res.json({
         success: true,
     });
 });
 
+//views routes
+app.get("/", (req,res) => {
+    res.render("index");
+});
 
-
+//api routes
 
 
 
