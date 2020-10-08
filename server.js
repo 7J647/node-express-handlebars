@@ -1,6 +1,7 @@
 const express = require("express");
 const exphbs = require("express-handlebars");
-const mysql = require("mysql");
+const connection = require("./config/connection");
+// const mysql = require("mysql");
 
 const app = express();
 
@@ -12,19 +13,19 @@ app.use(express.json());
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-var connection = mysql.createConnection({
-  host: "localhost",
-  port: 3306,
-  user: "root",
-  password: "PootyGasser5%",
-  database: "movie_planner_DB"
-});
+// var connection = mysql.createConnection({
+//   host: "localhost",
+//   port: 3306,
+//   user: "root",
+//   password: "PootyGasser5%",
+//   database: "movie_planner_DB"
+// });
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
+// app.use(express.json());
 
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-app.set("view engine", "handlebars");
+// app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+// app.set("view engine", "handlebars");
 
 
 app.get("/api/config", (req, res) => {
@@ -35,7 +36,10 @@ app.get("/api/config", (req, res) => {
 
 //views routes
 app.get("/", (req,res) => {
-    res.render("index");
+    connection.query("SELECT * FROM burger", (err, data) => {
+        console.table(data);
+    })
+    res.render("index", {name: "Jeff"});
 });
 
 //api routes

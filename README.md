@@ -5,7 +5,7 @@
 ###Heroku Deployment Steps
 
 Pre-step: Run 'heroku create' (takes an optional third argument)
-Pre-step: Run 'git remove -v" to check and make sure heroku is connected.
+Pre-step: Run 'git remote -v" to check and make sure heroku is connected.
 
 1. git status
 2. git add .
