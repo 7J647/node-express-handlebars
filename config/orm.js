@@ -1,46 +1,41 @@
-// * In the `orm.js` file, create the methods that will execute the necessary MySQL commands in the controllers. 
-// These are the methods you will need to use in order to retrieve and store data in your database.
-
-
 var connection = require("../config/connection.js");
 // * `selectAll()`
 // * `insertOne()`
 // * `updateOne()`
 
-function printQuestionMarks(num) {
-    var arr = [];
-    for (var i = 0; i < num; i++) {
-      arr.push("?");
-    }
-    return arr.toString();
-  }
+// function printQuestionMarks(num) {
+//     var arr = [];
+//     for (var i = 0; i < num; i++) {
+//       arr.push("?");
+//     }
+//     return arr.toString();
+//   }
   
-  function objToSql(ob) {
-    var arr = [];
-    for (var key in ob) {
-      var value = ob[key];
-      if (Object.hasOwnProperty.call(ob, key)) {
-        if (typeof value === "string" && value.indexOf(" ") >= 0) {
-          value = "'" + value + "'";
-        }
-        arr.push(key + "=" + value);
-      }
-    }
-    return arr.toString();
-  }
+//   function objToSql(ob) {
+//     var arr = [];
+//     for (var key in ob) {
+//       var value = ob[key];
+//       if (Object.hasOwnProperty.call(ob, key)) {
+//         if (typeof value === "string" && value.indexOf(" ") >= 0) {
+//           value = "'" + value + "'";
+//         }
+//         arr.push(key + "=" + value);
+//       }
+//     }
+//     return arr.toString();
+//   }
   
 
   // Object for all our SQL statement functions.
   var orm = {
-    selectAll: function(tableInput, cb) {
-      var queryString = "SELECT * FROM " + tableInput + ";";
-      connection.query(queryString, function(err, result) {
-        if (err) {
-          throw err;
-        }
-        cb(result);
-      });
-    },
+    all: function(tableInput, cb) {
+        var queryString = "SELECT * FROM " + tableInput + ";";
+        connection.query(queryString, function(err, result) {
+          if (err) throw err;
+          cb(result);
+        });
+      },
+    
 
     insertOne: function(table, cols, vals, cb) {
       var queryString = "INSERT INTO " + table;
