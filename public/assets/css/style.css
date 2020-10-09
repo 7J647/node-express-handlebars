@@ -22,3 +22,30 @@ h1 {
   color: red;
   text-align: center;
 }
+
+body {
+  background-color: goldenrod;
+}
+
+#mainSection {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#newBurger {
+  margin-left: 20%;
+}
+
+#leftSide {
+  
+}
+
+#rightSide {
+ 
+  
+}
+
+#burgerPic {
+  margin: auto;
+  display: block;
+}

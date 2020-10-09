@@ -1,27 +1,53 @@
-<img src="./images.jpg" alt="Eat-da-Burger">
+<img id="burgerPic" src="./assets/images.jpg" alt="Eat-da-Burger">
 
 
 <h1>Eat-da-Burger!</h1>
 
+<div id="mainSection">
+
+<div id="leftSide">
 <h2>Burgers that are not yet devoured</h2>
 
 <ul>
   {{#each cats}}
     {{#unless sleepy}}
-      {{> cats/cat-block sleep=true}}
+     <li>
+	{{name}}
+
+	<button class="change-sleep" data-id="{{id}}" data-newsleep="true">
+	DEVOUR THIS BURGER!
+	</button>
+
+	{{!-- <button class="delete-cat" data-id="{{this.id}}">DELETE!</button> --}}
+</li>
     {{/unless}}
   {{/each}}
 </ul>
+</div>
 
+<div id="rightSide">
 <h2>Burgers that have been devoured</h2>
 
 <ul>
   {{#each cats}}
     {{#if sleepy}}
-      {{> cats/cat-block sleep=false}}
+      <li>
+	{{name}}
+
+	{{!-- <button class="change-sleep" data-id="{{id}}" data-newsleep="{{sleep}}">
+		{{#if sleep}}DEVOUR THIS BURGER!{{else}}UM...DO THE OPPOSITE!{{/if}}
+	</button> --}}
+
+	{{!-- <button class="delete-cat" data-id="{{this.id}}">DELETE!</button> --}}
+</li>
     {{/if}}
   {{/each}}
 </ul>
+</div>
+
+</div>
+
+<div id="newBurger">
 
 <h2>Add a Burger</h2>
 <form class="create-form">
@@ -31,11 +57,12 @@
     <input type="text" id="ca" name="name">
   </div>
 
-  <div class="form-group">
+  {{!-- <div class="form-group">
     <label for="sleepy">Devoured yet?</label><br>
     <input type="radio" name="sleepy" value="1" checked> Devoured!<br>
     <input type="radio" name="sleepy" value="0"> not yet
-  </div>
+  </div> --}}
 
   <button type="submit">Add Burger</button>
 </form>
+</div>
