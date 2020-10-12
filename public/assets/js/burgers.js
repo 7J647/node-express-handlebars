@@ -7,7 +7,7 @@ $(function() {
       devoured: newBurger
     };
 
-    $.ajax("/api/cats/" + id, {
+    $.ajax("/api/burgers/" + id, {
       type: "PUT",
       data: newBurgerState
     }).then(
@@ -23,7 +23,7 @@ $(function() {
     var newBurger = {
       burger_name: $("#ca").val().trim(),
     };
-    $.ajax("/api/cats", {
+    $.ajax("/api/burgers", {
       type: "POST",
       data: newBurger
     }).then(
